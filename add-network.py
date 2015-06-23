@@ -9,7 +9,7 @@ import getopt
 
 def main(argv):
 	try:                                
-		opts, args = getopt.getopt(argv, "hu:d:", ["help", "user=","datacenter="])
+		opts, args = getopt.getopt(argv, "hu:d:r:", ["help", "user=","datacenter=,r_target="])
 	except getopt.GetoptError:                                
 		sys.exit(2)
 	for opt, arg in opts:       
@@ -19,10 +19,12 @@ def main(argv):
 			username = arg
 		elif opt in ("-d", "--datacenter"):
 			data_num = arg
+		elif opt in ("-r", "--r_target="):
+			target = arg
 	
 	subnet = "10.1." + str(data_num) +"."+str((int(username))*8)+"/29"
 	
-	command = "/root/code/config" + " " + "--username user" + username + " --password user" + username + " --tenant sandbox"+ username + " --api-server 127.0.0.1 " + "add network user" + username + "-net " + "--ipam ipam-default --subnet " + subnet + " --route-target 65025:10025"
+	command = "/root/code/config" + " " + "--username user" + username + " --password user" + username + " --tenant sandbox"+ username + " --api-server 127.0.0.1 " + "add network user" + username + "-net " + "--ipam ipam-default --subnet " + subnet + " --route-target " + target
 	
 	os.system(command)
 if __name__ == "__main__":
