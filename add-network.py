@@ -20,9 +20,9 @@ def main(argv):
 		elif opt in ("-d", "--datacenter"):
 			data_num = arg
 	
-	subnet = "10.1." + str(data_num) +"."+str((int(username)-1)*8)+"/29"
+	subnet = "10.1." + str(data_num) +"."+str((int(username))*8)+"/29"
 	
-	command = "/root/code/config" + " " + "--username user" + username + " --password user" + username + " --tenant sandbox"+ username + " --api-server 127.0.0.1 " + "add network user" + username + "-net " + "--ipam ipam-default --subnet " + subnet + " --route-target 65050:10050"
+	command = "/root/code/config" + " " + "--username user" + username + " --password user" + username + " --tenant sandbox"+ username + " --api-server 127.0.0.1 " + "add network user" + username + "-net " + "--ipam ipam-default --subnet " + subnet + " --route-target 65025:10025"
 	
 	os.system(command)
 if __name__ == "__main__":

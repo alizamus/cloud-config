@@ -20,7 +20,7 @@ def main(argv):
 		elif opt in ("-d", "--datacenter"):
 			data_num = arg
 	
-	subnet = "10.1." + str(data_num) +"."+str((int(username)-1)*8)+"/29"
+	subnet = "10.1." + str(data_num) +"."+str((int(username)-1))+"/29"
 	
 	command = "/root/code/config" + " " + "--username user" + username + " --password user" + username + " --tenant sandbox"+ username + " --api-server 127.0.0.1 " + "add floating-ip-pool user" + username + "-net-pool --network user" + username + "-net" 
 	#print command	
