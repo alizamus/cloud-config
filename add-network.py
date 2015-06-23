@@ -9,7 +9,7 @@ import getopt
 
 def main(argv):
 	try:                                
-		opts, args = getopt.getopt(argv, "hu:d:r:", ["help", "user=","datacenter=,r_target="])
+		opts, args = getopt.getopt(argv, "hu:d:r:", ["help", "user=","datacenter=","r_target="])
 	except getopt.GetoptError:                                
 		sys.exit(2)
 	for opt, arg in opts:       
@@ -19,7 +19,7 @@ def main(argv):
 			username = arg
 		elif opt in ("-d", "--datacenter"):
 			data_num = arg
-		elif opt in ("-r", "--r_target="):
+		elif opt in ("-r", "--r_target"):
 			target = arg
 	
 	subnet = "10.1." + str(data_num) +"."+str((int(username))*8)+"/29"
