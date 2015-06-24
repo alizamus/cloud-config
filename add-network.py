@@ -21,7 +21,7 @@ def main(argv):
 			data_num = arg
 		elif opt in ("-r", "--r_target"):
 			target = arg
-		elif opt in ("-s", "--start_user")
+		elif opt in ("-s", "--start_user"):
 			start_user = arg
 	
 	subnet = "10.1." + str(data_num) +"."+str(((int(username))-int(start_user))*8)+"/29"
