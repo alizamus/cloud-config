@@ -26,7 +26,7 @@ def main(argv):
 	
 	subnet = "10.1." + str(data_num) +"."+str(((int(username))-int(start_user))*8)+"/29"
 	
-	command = "/root/code/config" + " " + "--username user" + username + " --password user" + username + " --tenant sandbox"+ username + " --api-server 127.0.0.1 " + "add network user" + username + "-net " + "--ipam ipam-default --subnet " + subnet + " --route-target " + target
+	command = "/root/code/config" + " " + "--username user" + username + " --password user" + username + " --tenant sandbox"+ username + " --api-server 127.0.0.1 " + "add network public-user" + username + "-net " + "--ipam ipam-default --subnet " + subnet + " --route-target " + target
 	
 	os.system(command)
 if __name__ == "__main__":
