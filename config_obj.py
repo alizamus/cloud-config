@@ -908,10 +908,12 @@ class ConfigFloatingIpPool():
         if obj.get_floating_ips():
             print 'ERROR: There are allocated floating IPs!'
             return
-        for tenant_ref in obj.get_project_back_refs():
-            tenant = self.vnc.project_read(fq_name = tenant_ref['to'])
-            tenant.del_floating_ip_pool(obj)
-            self.vnc.project_update(tenant)
+
+	if obj.get_project_back_refs():
+            for tenant_ref in obj.get_project_back_refs():
+                tenant = self.vnc.project_read(fq_name = tenant_ref['to'])
+                tenant.del_floating_ip_pool(obj)
+                self.vnc.project_update(tenant)
         try:
             self.vnc.floating_ip_pool_delete(id = obj.uuid)
         except Exception as e:
